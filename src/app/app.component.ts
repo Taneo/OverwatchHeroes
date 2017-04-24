@@ -1,15 +1,6 @@
 import {Component} from '@angular/core';
-
-export class Role {
-    id: number;
-    name: string;
-}
-
-export class Hero {
-    id: number;
-    roleid: number;
-    name: string;
-}
+import { Hero } from './hero';
+import { Role } from './hero';
 
 const HEROES: Hero[] = [
     {id: 1, roleid: 2, name: 'Genji'},
@@ -54,34 +45,31 @@ const ROLES: Role[] = [
     styleUrls: ['./app.component.css'],
     template:   `<h1>{{title}}</h1>
                 <h2>My Heroes</h2>
-	            <div *ngIf="selectedHero">
-	            	<h2>{{selectedHero.name}} details!</h2>
-	            	<div><label>id: </label>{{selectedHero.id}}</div>
-	            	<div>
-	            		<label>name: </label>
-	            		<input [(ngModel)]="selectedHero.name" placeholder="name"/>
-	            	</div>
-	            </div>
-                <button *ngFor="let role of roles">
+                <button *ngFor="let role of roles" [class.selected]="role === selectedRole" (click)="onSelectRole(role)">
                     <span class="badge">{{role.name}}</span>
                 </button>
-                <ul class="heroes">
-                    <li *ngFor="let hero of heroes" [class.selected]="hero === selectedHero" (click)="onSelect(hero)">
+	            <hero-detail [hero]="selectedHero"></hero-detail>
+                <ul class="heroes"> 
+                    <li *ngFor="let hero of heroes" [class.selected]="hero === selectedHero" (click)="onSelectHero(hero)">
                         <span class="badge">{{hero.id}}</span> {{hero.name}}
                     </li>
                 </ul>
-	            
     `
 })
 
 export class AppComponent {
     title = 'Overwatch Heroes';
     selectedHero: Hero;
+    selectedRole: Role;
     heroes = HEROES;
     roles = ROLES;
 
-    onSelect(hero: Hero): void {
+    onSelectHero(hero: Hero): void {
         this.selectedHero = hero;
+    }
+
+    onSelectRole(role: Role): void {
+        this.selectedRole = role;
     }
 }
 
