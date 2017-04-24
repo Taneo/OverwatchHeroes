@@ -45,22 +45,27 @@ const ROLES: Role[] = [
     styleUrls: ['./app.component.css'],
     template:   `<h1>{{title}}</h1>
                 <h2>My Heroes</h2>
-                <button *ngFor="let role of roles" [class.selected]="role === selectedRole" (click)="onSelectRole(role)">
-                    <span class="badge">{{role.name}}</span>
-                </button>
+	            <button *ngFor="let role of roles" (click)="onSelectRole(role.id)">
+	            	<span class="badge">{{role.name}}</span>
+	            </button>
 	            <hero-detail [hero]="selectedHero"></hero-detail>
-                <ul class="heroes"> 
-                    <li *ngFor="let hero of heroes" [class.selected]="hero === selectedHero" (click)="onSelectHero(hero)">
-                        <span class="badge">{{hero.id}}</span> {{hero.name}}
-                    </li>
-                </ul>
+	            <div class="heroes">
+	            	<ng-container *ngFor="let hero of heroes" [class.selected]="hero === selectedHero">
+	            		<div *ngIf="hero.roleid === selectedRole" (click)="onSelectHero(hero)">
+	            			<span class="badge">{{hero.id}}</span> {{hero.name}}
+	            		</div>
+	            		<div *ngIf="selectedRole !== 2 && selectedRole !== 3 && selectedRole !== 4 && selectedRole !== 5" (click)="onSelectHero(hero)">
+	            			<span class="badge">{{hero.id}}</span> {{hero.name}}
+	            		</div>
+	            	</ng-container>
+	            </div>
     `
 })
 
 export class AppComponent {
     title = 'Overwatch Heroes';
     selectedHero: Hero;
-    selectedRole: Role;
+    selectedRole = 1;
     heroes = HEROES;
     roles = ROLES;
 
@@ -68,8 +73,8 @@ export class AppComponent {
         this.selectedHero = hero;
     }
 
-    onSelectRole(role: Role): void {
-        this.selectedRole = role;
+    onSelectRole(nr: number): void {
+        this.selectedRole = nr;
     }
 }
 
