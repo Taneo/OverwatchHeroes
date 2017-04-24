@@ -45,16 +45,19 @@ const ROLES: Role[] = [
     styleUrls: ['./app.component.css'],
     template:   `<h1>{{title}}</h1>
                 <h2>My Heroes</h2>
-	            <button *ngFor="let role of roles" (click)="onSelectRole(role.id)">
-	            	<span class="badge">{{role.name}}</span>
+	            <button class="roleButton" [class.selectedRole]="role.id === selectedRole" *ngFor="let role of roles" 
+                        (click)="onSelectRole(role.id)">
+	            	<span>{{role.name}}</span>
 	            </button>
 	            <hero-detail [hero]="selectedHero"></hero-detail>
 	            <div class="heroes">
-	            	<ng-container *ngFor="let hero of heroes" [class.selected]="hero === selectedHero">
-	            		<div *ngIf="hero.roleid === selectedRole" (click)="onSelectHero(hero)">
+	            	<ng-container *ngFor="let hero of heroes" >
+	            		<div [class.selected]="hero === selectedHero" *ngIf="hero.roleid === selectedRole" (click)="onSelectHero(hero)">
 	            			<span class="badge">{{hero.id}}</span> {{hero.name}}
 	            		</div>
-	            		<div *ngIf="selectedRole !== 2 && selectedRole !== 3 && selectedRole !== 4 && selectedRole !== 5" (click)="onSelectHero(hero)">
+	            		<div [class.selected]="hero === selectedHero" 
+                             *ngIf="selectedRole !== 2 && selectedRole !== 3 && selectedRole !== 4 && selectedRole !== 5" 
+                             (click)="onSelectHero(hero)">
 	            			<span class="badge">{{hero.id}}</span> {{hero.name}}
 	            		</div>
 	            	</ng-container>
