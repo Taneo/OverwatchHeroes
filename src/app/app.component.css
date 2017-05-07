@@ -84,12 +84,13 @@ main {
 	border:             3px solid white;
 	margin:             5px;
 	background-image:   url("../assets/img/hero/herobg.jpg");
+	width:              180px;
 	-webkit-transition: 200ms;
 	-moz-transition:    200ms;
 	-ms-transition:     200ms;
 	-o-transition:      200ms;
 	transition:         200ms;
-	height:             353px;
+	height:             311px;
 }
 
 .item:hover {
@@ -106,7 +107,7 @@ main {
 	background-color: rgba(40, 53, 79, .8);
 	height:           10%;
 	position:         relative;
-	top:              88%;
+	bottom:           14%;
 	padding-top:      8px;
 	font-size:        1.3rem;
 	text-align:       center;
