@@ -128,4 +128,9 @@ main > .details {
 	text-align: center;
 }
 
+.delete{
+	position: absolute;
+	z-index: 1;
+}
+
 

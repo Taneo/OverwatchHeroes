@@ -10,23 +10,7 @@ import 'rxjs/add/operator/switchMap';
 @Component({
     selector: 'hero-detail',
     templateUrl: './hero-detail.component.html',
-    styleUrls: ['hero-detail.component.css'],
-    template: `		
-		<div *ngIf="hero">
-			<h2>{{hero.name}} details!</h2>
-			<table>
-				<tr>
-					<th>ID:</th>
-					<td>{{hero.id}}</td>
-				</tr>
-				<tr>
-					<th>Name:</th>
-					<td><input type = "text" [(ngModel)] = "hero.name" placeholder = "name"/></td>
-				</tr>
-			</table>
-			<button class = "roleButton" (click) = "goBack()">Back</button>
-		</div>
-    `
+    styleUrls: ['hero-detail.component.css']
 })
 
 export class HeroDetailComponent implements OnInit {
@@ -37,6 +21,12 @@ export class HeroDetailComponent implements OnInit {
             .switchMap((params: Params) => this.heroService.getHero(+params['id']))
             .subscribe(hero => this.hero = hero);
     }
+
+    save(): void {
+        this.heroService.update(this.hero)
+            .then(() => this.goBack());
+    }
+
 
     goBack(): void {
         this.location.back();
