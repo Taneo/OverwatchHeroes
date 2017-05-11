@@ -1,0 +1,54 @@
+* {
+	font-family: Ubuntu;
+	font-size:   1.2rem;
+}
+
+h2 {
+	font-size:       1.3rem;
+	text-decoration: underline;
+	margin-left:     5%;
+}
+
+div:first-child {
+	position: relative;
+	top:      80px;
+}
+
+th {
+	text-align: right;
+}
+
+td {
+	padding-left: 10%;
+}
+
+td > input[type=text] {
+	background-color: rgba(0, 0, 0, 0.2);
+	border:           none;
+	height:           30px;
+	padding:          5px;
+}
+
+.roleButton {
+	background-color:   rgba(200, 200, 200, 0.5);
+	font-size:          1.2rem;
+	width:              368px;
+	height:             40px;
+	border:             1px solid rgba(40, 53, 79, .1);
+	border-radius:      0;
+	color:              #444444;
+	outline:            none;
+	-webkit-transition: background-color 500ms;
+	-moz-transition:    background-color 500ms;
+	-ms-transition:     background-color 500ms;
+	-o-transition:      background-color 500ms;
+	transition:         background-color 500ms;
+	transition:         background-color 500ms;
+	text-decoration:    none;
+
+}
+
+.roleButton:hover {
+	background-color: rgba(255, 255, 255, 0.3);
+	position:         relative;
+}

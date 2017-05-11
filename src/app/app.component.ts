@@ -6,8 +6,8 @@ import { Component } from '@angular/core';
     template: `
 		<h1><img src="src/assets/img/owlogo.png" alt="overwatch"></h1>
         <nav>
-			<a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-			<a routerLink="/heroes" routerLinkActive="active">Heroes</a>
+			<button class="roleButton" routerLink="/dashboard" routerLinkActive="active">Dashboard</button>
+			<button class="roleButton" routerLink="/heroes" routerLinkActive="active">Heroes</button>
 		</nav>
 		<router-outlet></router-outlet>
     `

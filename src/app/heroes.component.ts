@@ -29,7 +29,7 @@ const ROLES: Role[] = [
                     <div class="flex-container hero">
                         <ng-container *ngFor="let hero of heroes">
 							<div class="item" [class.selected]="hero === selectedHero" *ngIf="hero.roleid === selectedRole" (click)="onSelectHero(hero)">
-								<img src="{{hero.img}}" alt="">
+                                <img src="{{hero.img}}" alt="">
 								<div class="heroname">
                                     {{hero.name}}
                                 </div>
@@ -44,11 +44,11 @@ const ROLES: Role[] = [
 							</div>                            
                         </ng-container>
                     </div>
-		            <div *ngIf="selectedHero">
+		            <div class="details" *ngIf="selectedHero">
 			            <h2>
 			            	{{selectedHero.name | uppercase}} is my hero
 		            	</h2>
-			        <button (click)="gotoDetail()">View Details</button>
+			        <button class="roleButton" (click)="gotoDetail()">View Details</button>
 		            </div>
                 </main>
     `
