@@ -18,6 +18,7 @@ h1 {
 	bottom:           90%;
 	background-color: rgba(40, 53, 79, .95);
 	color:            white;
+	box-shadow:       0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 main {
@@ -129,16 +130,16 @@ nav {
 }
 
 .details {
-	position:           absolute;
-	top:                78%;
-	z-index:            2;
-	text-align:         center;
-	width:              100%;
-	font-size:          1.2rem;
-	border:             none;
-	background-color:   rgba(40, 53, 79, .8);
-	color:              #FFFFFF;
-	cursor:             pointer;
+	position:         absolute;
+	top:              78%;
+	z-index:          2;
+	text-align:       center;
+	width:            100%;
+	font-size:        1.2rem;
+	border:           none;
+	background-color: rgba(40, 53, 79, .8);
+	color:            #FFFFFF;
+	cursor:           pointer;
 }
 
 .details:hover {
@@ -146,15 +147,15 @@ nav {
 }
 
 .delete {
-	position:   absolute;
-	background-color:   rgba(40, 53, 79, .8);
-	width:      24px;
-	height:     24px;
-	text-align: right;
-	color:      white;
-	z-index:    1;
-	cursor:     pointer;
-	display:    none;
+	position:                   absolute;
+	background-color:           rgba(40, 53, 79, .8);
+	width:                      24px;
+	height:                     24px;
+	text-align:                 right;
+	color:                      white;
+	z-index:                    1;
+	cursor:                     pointer;
+	display:                    none;
 	border-bottom-right-radius: 10px;
 }
 
