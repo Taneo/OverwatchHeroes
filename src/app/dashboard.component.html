@@ -1,9 +1,15 @@
-<h3>Top Heroes</h3>
-<div>
-	<div *ngFor="let hero of heroes">
-		<div>
-			<h4>{{hero.name}}</h4>
+<main>
+	<h3>Top Heroes</h3>
+	<div class="flex-container">
+		<div *ngFor = "let hero of heroes">
+			<div class = "item">
+				<img src = "{{hero.img}}" alt = "">
+				<div class = "heroname">
+					{{hero.name}}
+				</div>
+			</div>
 		</div>
 	</div>
-</div>
-<hero-search></hero-search>
+	<hero-search class = "search"></hero-search>
+</main>
+

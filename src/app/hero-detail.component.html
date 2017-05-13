@@ -1,16 +1,23 @@
-<div *ngIf="hero">
-	<h2>{{hero.name}} details!</h2>
-	<table>
-		<tr>
-			<th>ID:</th>
-			<td>{{hero.id}}</td>
-		</tr>
-		<tr>
-			<th>Name:</th>
-			<td><input type = "text" [(ngModel)] = "hero.name" placeholder = "name"/></td>
-		</tr>
-	</table>
-	<button class = "roleButton" (click)="save()">Save</button>
-	<button class = "roleButton" (click) = "goBack()">Back</button>
-
-</div>
+<main>
+	<div *ngIf="hero">
+		<h2>{{hero.name}} details!</h2>
+		<table>
+			<tr>
+				<th>Image:</th>
+				<td><img src = "{{hero.img}}" alt = "hero image"></td>
+			</tr>
+			<tr>
+				<th>ID:</th>
+				<td>{{hero.id}}</td>
+			</tr>
+			<tr>
+				<th>Name:</th>
+				<td><input type = "text" [(ngModel)] = "hero.name" placeholder = "name"/></td>
+			</tr>
+		</table>
+		<div class="container">
+			<button class = "roleButton" (click)="save()">Save</button>
+			<button class = "roleButton" (click) = "goBack()">Back</button>
+		</div>
+	</div>
+</main>

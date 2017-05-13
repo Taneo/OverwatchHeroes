@@ -100,6 +100,10 @@ main {
 	-webkit-filter: brightness(120%);
 }
 
+.item:hover .delete {
+	display: inline-block;
+}
+
 .hero .selected {
 	transform:      scale(1.1);
 	-webkit-filter: brightness(120%);
@@ -124,13 +128,34 @@ nav {
 	text-align: center;
 }
 
-main > .details {
-	text-align: center;
+.details {
+	position:           absolute;
+	top:                78%;
+	z-index:            2;
+	text-align:         center;
+	width:              100%;
+	font-size:          1.2rem;
+	border:             none;
+	background-color:   rgba(40, 53, 79, .8);
+	color:              #FFFFFF;
+	cursor:             pointer;
 }
 
-.delete{
-	position: absolute;
-	z-index: 1;
+.details:hover {
+	transform: translateY(5%);
+}
+
+.delete {
+	position:   absolute;
+	background-color:   rgba(40, 53, 79, .8);
+	width:      24px;
+	height:     24px;
+	text-align: right;
+	color:      white;
+	z-index:    1;
+	cursor:     pointer;
+	display:    none;
+	border-bottom-right-radius: 10px;
 }
 
 

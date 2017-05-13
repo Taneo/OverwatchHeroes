@@ -1,18 +1,36 @@
-.search-result{
-	border-bottom: 1px solid gray;
-	border-left: 1px solid gray;
-	border-right: 1px solid gray;
-	width:195px;
-	height: 16px;
-	padding: 5px;
-	background-color: white;
-	cursor: pointer;
+* {
+	font-family: Ubuntu;
 }
+
+.search-result {
+	position:           relative;
+	font-size:          1.2rem;
+	border:             1px solid rgba(0, 0, 0, 0.2);
+	width:              250px;
+	height:             30px;
+	padding:            5px;
+	background-color:   rgba(0, 0, 0, 0.2);
+	cursor:             pointer;
+	-webkit-transition: 500ms;
+	-moz-transition:    500ms;
+	-ms-transition:     500ms;
+	-o-transition:      500ms;
+	transition:         500ms;
+	text-align:         left !important;
+	left:               50%;
+	transform:          translateX(-50%);
+}
+
 .search-result:hover {
-	color: #eee;
-	background-color: #607D8B;
+	background-color: rgba(255, 255, 255, 0.5);
 }
-#search-box{
-	width: 200px;
-	height: 20px;
+
+#search-box {
+	outline:          none;
+	font-size:        1.2rem;
+	width:            250px;
+	background-color: rgba(0, 0, 0, 0.2);
+	border:           1px solid rgba(0, 0, 0, 0.2);
+	height:           30px;
+	padding:          5px;
 }
