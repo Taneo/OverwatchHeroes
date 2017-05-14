@@ -1,10 +1,8 @@
-import {Component, OnInit, ViewContainerRef } from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import { Hero } from './hero';
 import { Role } from './hero';
 import { HeroService } from './hero.service';
 import { Router } from '@angular/router';
-import { Overlay } from 'angular2-modal';
-import { Modal } from 'angular2-modal/plugins/bootstrap';
 
 const ROLES: Role[] = [
     {id: 1, name: 'All'},
@@ -27,7 +25,8 @@ export class HeroesComponent implements OnInit {
     roles = ROLES;
 
     constructor(private router: Router
-        , private heroService: HeroService){}
+        , private heroService: HeroService
+        , private modal: ElementRef){}
 
     getHeroes(): void {
         this.heroService.getHeroes().then(heroes => this.heroes = heroes);
@@ -66,6 +65,19 @@ export class HeroesComponent implements OnInit {
                 this.heroes = this.heroes.filter(h => h !== hero);
                 if (this.selectedHero === hero) { this.selectedHero = null; }
             });
+    }
+
+    displayBlock(){
+        document.getElementById('modal').style.display = 'block';
+    }
+
+    closeModal(){
+        document.getElementById('modal').style.display = 'none';
+    }
+
+    save(): void {
+        this.heroService.update(this.hero)
+            .then(() => this.closeModal());
     }
 }
 
