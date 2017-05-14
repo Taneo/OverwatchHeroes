@@ -74,11 +74,6 @@ export class HeroesComponent implements OnInit {
     closeModal(){
         document.getElementById('modal').style.display = 'none';
     }
-
-    save(): void {
-        this.heroService.update(this.hero)
-            .then(() => this.closeModal());
-    }
 }
 
 

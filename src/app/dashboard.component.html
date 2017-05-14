@@ -1,15 +1,20 @@
 <main>
-	<h3>Top Heroes</h3>
-	<div class="flex-container">
-		<div *ngFor = "let hero of heroes">
-			<div class = "item">
-				<img src = "{{hero.img}}" alt = "">
-				<div class = "heroname">
-					{{hero.name}}
+	<div id="banner">
+		<img class="bannerimg" src = "src/assets/img/owbanner.jpg" alt = "owbanner">
+		<div class = "shadow"></div>
+		<div class = "flex-container">
+			<div *ngFor = "let hero of heroes">
+				<div class = "item">
+					<img src = "{{hero.img}}" alt = "">
+					<div class = "heroname">
+						{{hero.name}}
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
+
 	<hero-search class = "search"></hero-search>
 </main>
 
