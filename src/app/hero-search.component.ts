@@ -10,6 +10,7 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import { HeroSearchService } from './hero-search.service';
 import { Hero } from './hero';
+
 @Component({
     selector: 'hero-search',
     templateUrl: './hero-search.component.html',
@@ -18,6 +19,8 @@ import { Hero } from './hero';
 })
 export class HeroSearchComponent implements OnInit {
     heroes: Observable<Hero[]>;
+    selectedHero: Hero;
+
     private searchTerms = new Subject<string>();
     constructor(
         private heroSearchService: HeroSearchService,
@@ -47,5 +50,14 @@ export class HeroSearchComponent implements OnInit {
     gotoDetail(hero: Hero): void {
         let link = ['/detail', hero.id];
         this.router.navigate(link);
+    }
+
+    selectHero(hero: Hero): void {
+        this.selectedHero = hero;
+        console.log(this.selectedHero);
+    }
+
+    openModal(){
+        document.getElementById('modal').style.display = 'block';
     }
 }

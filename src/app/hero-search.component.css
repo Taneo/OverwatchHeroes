@@ -34,3 +34,138 @@
 	height:           30px;
 	padding:          5px;
 }
+
+#modal {
+	overflow:         hidden;
+	color:            #222222;
+	display:          none; /* Hidden by default */
+	position:         fixed; /* Stay in place */
+	z-index:          99; /* Sit on top */
+	left:             0;
+	top:              0;
+	width:            100%; /* Full width */
+	height:           100%; /* Full height */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.6); /* Black w/ opacity */
+}
+
+.modal-header {
+	background-color: rgba(40, 53, 79, 1);
+	color:            #EEEEEE;
+	height:           100%;
+	padding:          2px 16px;
+	box-shadow:       0px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+#modal input[type=text] {
+	background-color: rgba(0, 0, 0, 0.2);
+	border:           1px solid rgba(0, 0, 0, 0.2);
+	width:            90%;
+	border:           1px solid;
+	font-size:        1.2rem;
+	padding:          5px;
+	border-radius:    3px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+	overflow:                   hidden;
+	background-color:           rgba(230, 230, 230, .8);
+	margin:                     15% auto; /* 15% from the top and centered */
+	border:                     none;
+	border-radius:              10px;
+	width:                      280px; /* Could be more or less, depending on screen size */
+	padding:                    0;
+	box-shadow:                 3px 3px 10px rgba(0, 0, 0, 0.2);
+	-webkit-animation-name:     animatetop;
+	-webkit-animation-duration: 0.4s;
+	animation-name:             animatetop;
+	animation-duration:         0.4s
+}
+
+.modal-footer {
+	padding:          10px;
+	background-color: rgba(40, 53, 79, 1);
+	box-shadow:       0px 2px 5px rgba(0, 0, 0, 0.8);
+}
+
+#modal main {
+	top:    0;
+	margin: 5px;
+}
+
+#modal .roleButton {
+	width:  100%;
+	color:  #EEEEEE;
+	cursor: pointer;
+}
+
+@-webkit-keyframes animatetop {
+	from {
+		top:     -300px;
+		opacity: 0
+	}
+	to {
+		top:     0;
+		opacity: 1
+	}
+}
+
+@keyframes animatetop {
+	from {
+		top:     -300px;
+		opacity: 0
+	}
+	to {
+		top:     0;
+		opacity: 1
+	}
+}
+
+/* The Close Button */
+.close {
+	color:       #AAAAAA;
+	float:       right;
+	font-size:   28px;
+	font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+	color:           black;
+	text-decoration: none;
+	cursor:          pointer;
+}
+
+.roleButton {
+	background-color:   rgba(200, 200, 200, 0.5);
+	font-size:          1.2rem;
+	width:              230px;
+	height:             40px;
+	border:             1px solid rgba(40, 53, 79, .1);
+	border-radius:      0;
+	color:              #444444;
+	outline:            none;
+	-webkit-transition: background-color 500ms;
+	-moz-transition:    background-color 500ms;
+	-ms-transition:     background-color 500ms;
+	-o-transition:      background-color 500ms;
+	transition:         background-color 500ms;
+	transition:         background-color 500ms;
+	text-decoration:    none;
+}
+
+.roleButton:first-child {
+	border-top-left-radius:    8px;
+	border-bottom-left-radius: 8px;
+}
+
+.roleButton:last-child {
+	border-top-right-radius:    8px;
+	border-bottom-right-radius: 8px;
+}
+
+.roleButton:hover {
+	background-color: rgba(255, 255, 255, 0.3);
+	position:         relative;
+}

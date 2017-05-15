@@ -12,9 +12,16 @@ import { HeroService } from './hero.service';
 
 export class DashboardComponent implements OnInit {
     heroes: Hero[] = [];
+    rnd: number = this.getRandom(0, 20);
+
     constructor(private heroService: HeroService) { }
+
     ngOnInit(): void {
         this.heroService.getHeroes()
-            .then(heroes => this.heroes = heroes.slice(4, 8));
+            .then(heroes => this.heroes = heroes.slice(this.rnd, this.rnd + 4));
+    }
+
+    getRandom(min: number, max: number): number {
+        return Math.random() * (max - min) + min;
     }
 }

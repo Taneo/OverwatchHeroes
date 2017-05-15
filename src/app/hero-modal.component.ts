@@ -1,30 +1,32 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ActivatedRoute, Params}   from '@angular/router';
-import {Location}                 from '@angular/common';
+import {ActivatedRoute, Params} from '@angular/router';
+import {Location} from '@angular/common';
 
 import {HeroService} from './hero.service';
+import {HeroSearchComponent} from './hero-search.component';
 import {Hero} from './hero';
 
 import 'rxjs/add/operator/switchMap';
 
 @Component({
-    selector: 'hero-detail',
-    templateUrl: './hero-detail.component.html',
-    styleUrls: ['hero-detail.component.css']
+    selector: 'hero-modal',
+    templateUrl: './hero-modal.component.html',
+    styleUrls: ['hero-search.component.css']
 })
 
-export class HeroDetailComponent implements OnInit {
+export class HeroModalComponent implements OnInit {
     @Input() hero: Hero;
 
     ngOnInit(): void {
+
         this.route.params
-            .switchMap((params: Params) => this.heroService.getHero(+params['id']))
+            .switchMap((hero: Hero) => this.heroService.getHero(this.hero.id))
             .subscribe(hero => this.hero = hero);
     }
 
     save(): void {
         this.heroService.update(this.hero)
-            .then(() => this.goBack());
+            .then(() => this.closeModal());
     }
 
     goBack(): void {
@@ -34,5 +36,9 @@ export class HeroDetailComponent implements OnInit {
     constructor(private heroService: HeroService,
                 private route: ActivatedRoute,
                 private location: Location) {
+    }
+
+    closeModal(){
+        document.getElementById('modal').style.display = 'none';
     }
 }

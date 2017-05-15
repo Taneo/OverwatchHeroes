@@ -13,7 +13,7 @@
 			<div class = "item" [class.selected] = "hero === selectedHero" *ngIf = "hero.roleid === selectedRole" (click) = "onSelectHero(hero)">
 				<a class = "delete" (click) = "delete(hero); $event.stopPropagation()"><img src = "src/assets/img/clearw.svg"></a>
 				<img src = "{{hero.img}}" alt = "">
-				<button class = "details" *ngIf = "hero === selectedHero" (click) = "displayBlock()">View Details</button>
+				<button class = "details" *ngIf = "hero === selectedHero" (click) = "openModal()">View Details</button>
 				<div class = "heroname">
 					{{hero.name}}
 				</div>
@@ -23,42 +23,13 @@
 				 (click) = "onSelectHero(hero)">
 				<a class = "delete" (click) = "delete(hero); $event.stopPropagation()"><img src = "src/assets/img/clearw.svg"></a>
 				<img src = "{{hero.img}}" alt = "">
-				<button class = "details" *ngIf = "hero === selectedHero" (click) = "displayBlock()">View Details</button>
+				<button class = "details" *ngIf = "hero === selectedHero" (click) = "openModal()">View Details</button>
 				<div class = "heroname">
 					{{hero.name}}
 				</div>
 			</div>
-			<div id = "modal" *ngIf = "hero === selectedHero">
-
-				<div class = "modal-content">
-					<header class="modal-header">
-						<span (click) = "closeModal()" class = "close">&times;</span>
-						<h2>{{hero.name}} details!</h2>
-					</header>
-					<main>
-						<table>
-							<tr>
-								<th>Image:</th>
-								<td><img src = "{{hero.img}}" alt = "hero image"></td>
-							</tr>
-							<tr>
-								<th>ID:</th>
-								<td>{{hero.id}}</td>
-							</tr>
-							<tr>
-								<th>Name:</th>
-								<td><input type = "text" [(ngModel)] = "hero.name" placeholder = "name"/></td>
-							</tr>
-						</table>
-					</main>
-					<footer class = "modal-footer">
-						<div class = "container">
-							<button class = "roleButton" (click) = "closeModal()">Save</button>
-						</div>
-					</footer>
-				</div>
-			</div>
 		</ng-container>
+		<hero-modal [hero]="selectedHero" *ngIf="selectedHero"></hero-modal>
 	</div>
 	<button (click) = "add(heroName.value); heroName.value=''">Add</button> <!-- Bug nicht klicken -->
 </main>

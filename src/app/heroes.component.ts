@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Hero } from './hero';
 import { Role } from './hero';
 import { HeroService } from './hero.service';
@@ -25,8 +25,7 @@ export class HeroesComponent implements OnInit {
     roles = ROLES;
 
     constructor(private router: Router
-        , private heroService: HeroService
-        , private modal: ElementRef){}
+        , private heroService: HeroService){}
 
     getHeroes(): void {
         this.heroService.getHeroes().then(heroes => this.heroes = heroes);
@@ -67,7 +66,7 @@ export class HeroesComponent implements OnInit {
             });
     }
 
-    displayBlock(){
+    openModal(){
         document.getElementById('modal').style.display = 'block';
     }
 
