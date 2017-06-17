@@ -9,7 +9,7 @@ const ROLES: Role[] = [
     {id: 2, name: 'Offense', icon: 'src/assets/img/offense.svg'},
     {id: 3, name: 'Defense', icon: 'src/assets/img/defense.svg'},
     {id: 4, name: 'Tank', icon: 'src/assets/img/tank.svg'},
-    {id: 5, name: 'Support', icon: 'src/assets/img/support.svg'},
+    {id: 5, name: 'Support', icon: 'src/assets/img/support.svg'}
 ];
 
 @Component({
@@ -68,10 +68,6 @@ export class HeroesComponent implements OnInit {
 
     openModal(){
         document.getElementById('modal').style.display = 'block';
-    }
-
-    closeModal(){
-        document.getElementById('modal').style.display = 'none';
     }
 }
 
