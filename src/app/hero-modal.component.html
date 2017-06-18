@@ -1,5 +1,4 @@
-<div id = "modal">
-
+<div *ngIf="hero" id = "modal">
 	<div class = "modal-content">
 		<header class="modal-header">
 			<span (click) = "closeModal()" class = "close">&times;</span>
@@ -23,7 +22,7 @@
 		</main>
 		<footer class = "modal-footer">
 			<div class = "container">
-				<button class = "roleButton" (click) = "save()">Save</button>
+				<button *ngIf="hero" class = "roleButton" (click) = "save(hero)">Save</button>
 			</div>
 		</footer>
 	</div>

@@ -72,12 +72,20 @@ router.put('/hero/:id', function(req, res, next) {
 	var hero = req.body;
 	var updHero = {};
 
+	if(hero.id){
+		updHero.id = hero.id;
+	}
+
 	if(hero.roleid){
 		updHero.roleid = hero.roleid;
 	}
 
 	if(hero.name){
 		updHero.name = hero.name;
+	}
+
+	if(hero.img){
+		updHero.img = hero.img
 	}
 
 	if(!updHero) {

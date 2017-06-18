@@ -1,5 +1,5 @@
 
-import { InMemoryDbService } from 'angular-in-memory-web-api';
+/*import { InMemoryDbService } from 'angular-in-memory-web-api';
 export class InMemoryDataService implements InMemoryDbService {
     createDb() {
         let heroes = [
@@ -30,5 +30,5 @@ export class InMemoryDataService implements InMemoryDbService {
         ];
         return {heroes};
     }
-}
+}*/
 

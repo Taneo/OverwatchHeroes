@@ -18,15 +18,23 @@ export class HeroModalComponent implements OnInit {
     @Input() hero: Hero;
 
     ngOnInit(): void {
-
         this.route.params
-            .switchMap((hero: Hero) => this.heroService.getHero(this.hero.id))
+            .switchMap((hero: Hero) => this.heroService.getHero(this.hero._id))
             .subscribe(hero => this.hero = hero);
     }
 
-    save(): void {
-        this.heroService.update(this.hero)
-            .then(() => this.closeModal());
+    save(hero): void {
+        let _heroes = {
+           _id: hero._id,
+           id: hero.id,
+           roleid: hero.roleid,
+           name: hero.name,
+           img: hero.img,
+        };
+
+        this.heroService.update(_heroes).subscribe(() => {
+            this.closeModal();
+        });
     }
 
     goBack(): void {

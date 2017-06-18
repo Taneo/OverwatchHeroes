@@ -5,6 +5,7 @@ export class Role {
 }
 
 export class Hero {
+    _id: string;
     id: number;
     roleid: number;
     name: string;

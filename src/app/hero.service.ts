@@ -7,17 +7,25 @@ import { Hero } from './hero';
 
 @Injectable()
 export class HeroService {
-    private heroesUrl = 'api/heroes';
+    private heroesUrl = 'http://localhost:3000';
     private headers = new Headers({'Content-Type': 'application/json'});
 
-    constructor(private http: Http) { }
+    constructor(private http: Http) {
+        console.log('Hero Service initialized');
+    }
 
-    getHeroes(): Promise<Hero[]> {
+    /*getHeroes(): Promise<Hero[]> {
         return this.http.get(this.heroesUrl)
             .toPromise()
             .then(response => response.json().data as Hero[])
             .catch(this.handleError);
+    }*/
+
+    getHeroes() {
+        return this.http.get(this.heroesUrl + '/api/heroes')
+            .map(res => res.json());
     }
+
 
     private handleError(error: any): Promise<any> {
         console.error('An error occurred', error);
@@ -25,21 +33,19 @@ export class HeroService {
     }
 
 
-    getHero(id: number): Promise<Hero> {
-        const url = `${this.heroesUrl}/${id}`;
+    getHero(id): Promise<Hero> {
+        const url = this.heroesUrl + '/api/hero/' + id;
         return this.http.get(url)
             .toPromise()
             .then(response => response.json().data as Hero)
             .catch(this.handleError);
     }
 
-    update(hero: Hero): Promise<Hero> {
-        const url = `${this.heroesUrl}/${hero.id}`;
+    update(hero) {
+        const url = this.heroesUrl + '/api/hero/' + hero._id;
         return this.http
             .put(url, JSON.stringify(hero), {headers: this.headers})
-            .toPromise()
-            .then(() => hero)
-            .catch(this.handleError);
+            .map(res => res.json());
     }
 
     create(name: string): Promise<Hero> {
@@ -50,11 +56,8 @@ export class HeroService {
             .catch(this.handleError);
     }
 
-    delete(id: number): Promise<void> {
-        const url = `${this.heroesUrl}/${id}`;
-        return this.http.delete(url, {headers: this.headers})
-            .toPromise()
-            .then(() => null)
-            .catch(this.handleError);
+    delete(id) {
+        const url = this.heroesUrl + '/api/hero/' + id;
+        return this.http.delete(url).map(res => res.json());
     }
 }
