@@ -14,13 +14,6 @@ export class HeroService {
         console.log('Hero Service initialized');
     }
 
-    /*getHeroes(): Promise<Hero[]> {
-        return this.http.get(this.heroesUrl)
-            .toPromise()
-            .then(response => response.json().data as Hero[])
-            .catch(this.handleError);
-    }*/
-
     getHeroes() {
         return this.http.get(this.heroesUrl + '/api/heroes')
             .map(res => res.json());
@@ -48,12 +41,11 @@ export class HeroService {
             .map(res => res.json());
     }
 
-    create(name: string): Promise<Hero> {
+    create(hero) {
+        const url = this.heroesUrl + '/api/hero/';
         return this.http
-            .post(this.heroesUrl, JSON.stringify({name: name}), {headers: this.headers})
-            .toPromise()
-            .then(res => res.json().data as Hero)
-            .catch(this.handleError);
+            .post(url, JSON.stringify(hero), {headers: this.headers})
+            .map(res => res.json());
     }
 
     delete(id) {

@@ -48,22 +48,8 @@ export class HeroesComponent implements OnInit {
         this.selectedRole = nr;
     }
 
-    gotoDetail(): void {
-        this.router.navigate(['/detail', this.selectedHero._id]);
-    }
-
-    /*add(name: string): void {
-        name = name.trim();
-        if (!name) { return; }
-        this.heroService.create(name)
-            .then(hero => {
-                this.heroes.push(hero);
-                this.selectedHero = null;
-            });
-    }*/
-
     delete(id): void {
-        let heroes = this.heroes;
+        const heroes = this.heroes;
 
         this.heroService.delete(id).subscribe(data => {
             if(data.n === 1){
@@ -78,6 +64,10 @@ export class HeroesComponent implements OnInit {
 
     openModal(){
         document.getElementById('modal').style.display = 'block';
+    }
+
+    openAddModal(){
+        document.getElementById('addModal').style.display = 'block';
     }
 }
 

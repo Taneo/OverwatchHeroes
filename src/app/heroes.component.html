@@ -30,6 +30,7 @@
 			</div>
 		</ng-container>
 		<hero-modal [hero]="selectedHero" *ngIf="selectedHero"></hero-modal>
+		<hero-addModal></hero-addModal>
 	</div>
-	<button (click) = "add(heroName.value); heroName.value=''">Add</button> <!-- Bug nicht klicken -->
+	<button (click) = "openAddModal()">Add</button>
 </main>
