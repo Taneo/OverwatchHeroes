@@ -20,7 +20,7 @@ export class HeroAddModalComponent implements OnInit{
         id: 999,
         roleid: 2,
         name: 'Unknown',
-        img: 'src/assets/img/hero/defaultIcon.png'
+        img: 'src/assets/img/hero/defaultIcon.png',
     };
 
     ngOnInit(): void {
@@ -55,7 +55,7 @@ export class HeroAddModalComponent implements OnInit{
             id: newId,
             roleid: this.newHero.roleid,
             name: this.newHero.name,
-            img: this.newHero.img
+            img: this.newHero.img,
         };
 
         this.heroService.create(_heroes).subscribe(() => {

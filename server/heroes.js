@@ -85,7 +85,11 @@ router.put('/hero/:id', function(req, res, next) {
 	}
 
 	if(hero.img){
-		updHero.img = hero.img
+		updHero.img = hero.img;
+	}
+
+	if(hero.desc){
+		updHero.desc = hero.desc;
 	}
 
 	if(!updHero) {

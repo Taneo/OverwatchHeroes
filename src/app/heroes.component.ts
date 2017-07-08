@@ -37,7 +37,11 @@ export class HeroesComponent implements OnInit {
 
     ngOnInit(): void {
         this.getHeroes();
-        this.selectedHero = {_id: '5946793d734d1d59b7895a65', id: 1, roleid: 2, name: 'Genji', img: 'src/assets/img/hero/genji.png'};
+        this.selectedHero = {
+            _id: '5946793d734d1d59b7895a65',
+            id: 1, roleid: 2, name: 'Genji',
+            img: 'src/assets/img/hero/genji.png',
+        };
     }
 
     onSelectHero(hero: Hero): void {

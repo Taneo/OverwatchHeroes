@@ -1,24 +1,28 @@
 <div *ngIf="hero" id = "modal">
-	<div class = "modal-content">
+	<div class = "modal-content" [@wide]="state">
 		<header class="modal-header">
 			<span (click) = "closeModal()" class = "close">&times;</span>
 			<h2>{{hero.name}} details!</h2>
 		</header>
 		<main>
-			<table>
-				<tr>
-					<th>Image:</th>
-					<td><img src = "{{hero.img}}" alt = "hero image"></td>
-				</tr>
-				<tr>
-					<th>ID:</th>
-					<td>{{hero.id}}</td>
-				</tr>
-				<tr>
-					<th>Name:</th>
-					<td><input type = "text" [(ngModel)] = "hero.name" placeholder = "name"/></td>
-				</tr>
-			</table>
+			<div id="table">
+				<span (click)="animate()" *ngIf="state === 'still'" class="expand"> ▶ </span>
+				<span (click)="animate()" *ngIf="state === 'moving'" class="expand"> ◀ </span>
+				<table>
+					<tr>
+						<td></td>
+						<td><img width="180" height="310" src = "{{hero.img}}" alt = "hero image"></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><input type = "text" [(ngModel)] = "hero.name" placeholder = "name"/></td>
+					</tr>
+				</table>
+			</div>
+			<div [@movePanel]="state" id="desc">
+				<h3>Description:</h3>
+				<p>{{hero.desc}}</p>
+			</div>
 		</main>
 		<footer class = "modal-footer">
 			<div class = "container">

@@ -10,4 +10,6 @@ export class Hero {
     roleid: number;
     name: string;
     img?: string;
+    desc?: string;
+    ability?: Object;
 }
