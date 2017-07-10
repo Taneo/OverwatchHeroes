@@ -10,6 +10,7 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import { HeroSearchService } from './hero-search.service';
 import { Hero } from './hero';
+import { HeroService } from './hero.service';
 
 @Component({
     selector: 'hero-search',
@@ -18,44 +19,42 @@ import { Hero } from './hero';
     providers: [HeroSearchService]
 })
 export class HeroSearchComponent implements OnInit {
-    heroes: Observable<Hero[]>;
+    heroes: Hero[];
+    searchHero: Hero[];
     selectedHero: Hero;
 
-    private searchTerms = new Subject<string>();
     constructor(
         private heroSearchService: HeroSearchService,
-        private router: Router) {}
-
-    // Push a search term into the observable stream.
-    search(term: string): void {
-        console.log(this.heroes);
-        this.searchTerms.next(term);
+        private router: Router,
+        private heroService: HeroService) {
+        this.getHeroes();
     }
 
-    ngOnInit(): void {
-        this.heroes = this.searchTerms
-            .debounceTime(300)        // wait 300ms after each keystroke before considering the term
-            .distinctUntilChanged()   // ignore if next search term is same as previous
-            .switchMap(term => term   // switch to new observable each time the term changes
-                // return the http search observable
-                ? this.heroSearchService.search(term)
-                // or the observable of empty heroes if there was no search term
-                : Observable.of<Hero[]>([]))
-            .catch(error => {
-                // TODO: add real error handling
-                console.log(error);
-                return Observable.of<Hero[]>([]);
-            });
+    search(term: string): void{
+        this.searchHero = [];
+        this.filterHero(term);
     }
 
-    gotoDetail(hero: Hero): void {
-        let link = ['/detail', hero.id];
-        this.router.navigate(link);
+    filterHero(term: string) {
+        this.heroes.forEach((hero, i) => {
+            if (hero.name.toUpperCase().indexOf(term.toUpperCase()) !== -1 && term !== '') {
+                this.searchHero.push(this.heroes[i]);
+            }
+        });
+    }
+
+    ngOnInit(): void{
+    }
+
+    getHeroes(): void {
+        this.heroService.getHeroes().subscribe(heroes => {
+            this.heroes = heroes;
+            this.searchHero = [];
+        });
     }
 
     selectHero(hero: Hero): void {
         this.selectedHero = hero;
-        console.log(this.selectedHero);
     }
 
     openModal(){
